@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs')%>
+    <style>
+        body {
+            background-color: rgb(204, 172, 234);
+        }
+        img {
+            border-radius: 30px;
+            
+        }
+        a {
+            color: rgb(214, 100, 209);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><%= data.name%></h1>
+        <img src="<%= data.img%>" alt="<%= data.name%>"><br>
+        Type:
+        <ul>
+            <% for(let i=0; i < data.type.length; i++) { %>
+                <li>
+                    <%= data.type[i]%>
+                </li>
+            <% } %>
+        </ul>
+
+        <ul>
+            <li>name <%= data.name%> </li>
+            <li>description: <%= data.description%> </li>
+            <li>img: <%= data.img%> </li>
+            <li>qty: <%= data.qty%></li>
+        </ul>
+        <a href="/products">Back</a>
+
+    </div> 
+</body>
+</html>

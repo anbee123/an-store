@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs')%>
+    <style>
+        body {
+            background-color: rgb(204, 172, 234);
+        }
+        img {
+            border-radius: 30px;
+            
+        }
+        a {
+            color: rgb(202, 106, 197);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/products/new">Add a new product</a>
+        </nav>
+    <h1> WELCOME TO MY STORE</h1>
+    <ul>
+        <% products.forEach(products => { %> 
+            <li>
+                <a href="/products/<%=products._id %>"><%= products.name %></a>
+                <form action="/products/<%= products._id %>?_method=DELETE" method="post">
+                    <input type="submit" value="DELETE"  />
+                  </form>
+                  <a href="/products/<%= products._id %>/edit">EDIT</a>
+            </li>
+            <% }) %>
+    </ul>
+</body>
+</html>

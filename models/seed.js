@@ -1,4 +1,4 @@
-const bookData = [
+const seedData = [
     
         {
           name: "Beans",
@@ -23,4 +23,4 @@ const bookData = [
           qty: 1,
         },
       ]
-  module.exports = bookData;
+  module.exports = seedData;

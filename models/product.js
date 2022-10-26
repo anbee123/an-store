@@ -9,7 +9,7 @@ const productsSchema = new mongoose.Schema( {
    
 })
 //this is where we define our model using the schema we created
-const products = mongoose.model("products", productsSchema)
+const Product = mongoose.model("Products", productsSchema)
 
 //this is how we send vars to other files
-module.exports = products
+module.exports = Product
