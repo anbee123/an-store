@@ -4,32 +4,56 @@
     <%- include('./partials/head.ejs')%>
     <style>
         body {
-            background-color: rgb(204, 172, 234);
+            background-image: url("https://ae01.alicdn.com/kf/HTB1w3cCdliE3KVjSZFMq6zQhVXaG/White-Wood-Texture-Photography-Backdrops-Wooden-floor-photo-background-newborn-Props-photo-booth-Studio-picture.jpg_Q90.jpg_.webp");
+            font-family: inherit;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+
         }
         img {
             border-radius: 30px;
-            
+            height: 520px;
+            width: 520px;
+            border: 2px solid pink;
+            display: flex;
+            justify-content: center;
+        
         }
-        a {
-            color: rgb(202, 106, 197);
+        a{
+            display: flex;
+            justify-content: center ;
+        }
+        li{
+            display: flex;
+            justify-content: first baseline;
+        }
+        h1{
+            color: rgb(174, 8, 166);
+         border: 2px;
+         font-size: 50px;
+         font-family:fantasy;
+        }
+        ul {
+            font-family: inherit;
+            font-size: 20px;
+            color: rgb(147, 42, 98);
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/products/new">Add a new product</a>
-        </nav>
-    <h1> WELCOME TO MY STORE</h1>
-    <ul>
-        <% products.forEach(products => { %> 
-            <li>
-                <a href="/products/<%=products._id %>"><%= products.name %></a>
-                <form action="/products/<%= products._id %>?_method=DELETE" method="post">
-                    <input type="submit" value="DELETE"  />
-                  </form>
-                  <a href="/products/<%= products._id %>/edit">EDIT</a>
-            </li>
+    <div class="container">
+    <h1> WELCOME TO MY VIETNAMESE RESTAURANT</h1>
+               <% products.forEach(products =>{ %>
+            <div class= "items">
+            <div class="info">
+                <a href="/products/<%=products._id %>"><%=products.name%></a>
+                <img src=<%=products.img %>> <br />
+                    Price: $<%=products.price %>
+                    </div>
+                    </div>
             <% }) %>
-    </ul>
+
+        </div>
 </body>
 </html>

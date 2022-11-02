@@ -3,12 +3,19 @@
 <head>
     <%- include('./partials/head.ejs')%>
     <style>
+    
         body {
-            background-color: rgb(204, 172, 234);
-        }
+            background-image: url("https://st3.depositphotos.com/1021722/13762/i/450/depositphotos_137623752-stock-photo-art-spring-background-fresh-flower.jpg");
+            font-family: inherit;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flexbox;
+            text-align: center;
+            justify-content: center;
+ }
         img {
-            border-radius: 30px;
-            
+           size: 10%;
+           padding: 5%;
         }
         a {
             color: rgb(214, 100, 209);
@@ -17,24 +24,25 @@
 </head>
 <body>
     <div class="container">
-        <h1><%= data.name%></h1>
-        <img src="<%= data.img%>" alt="<%= data.name%>"><br>
-        Type:
+        <h1><%= products.name%></h1>
+        <img src="<%= products.img%>" alt="<%= products.name%>"><br>
+    
         <ul>
-            <% for(let i=0; i < data.type.length; i++) { %>
+            <% for(let i=0; i < products.length; i++) { %>
                 <li>
-                    <%= data.type[i]%>
+                    <%= products[i].name%>
                 </li>
             <% } %>
         </ul>
 
         <ul>
-            <li>name <%= data.name%> </li>
-            <li>description: <%= data.description%> </li>
-            <li>img: <%= data.img%> </li>
-            <li>qty: <%= data.qty%></li>
+            <li>Name: <%= products.name%> </li>
+            <li>Description: <%= products.description%> </li>
+             <li>Quantity: <%= products.qty%></li>
         </ul>
-        <a href="/products">Back</a>
+        <form action="/products/<%= products._id %>?_method=PUT" method="post">
+            <input type="submit" value="BUY"  />
+          <a href="/products/<%= products._id %>/edit">Update</a>
 
     </div> 
 </body>

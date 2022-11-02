@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
     <%- include("./partials/head.ejs")%>
+    <style>
+        body {
+         background-image: url("https://ae01.alicdn.com/kf/HTB1w3cCdliE3KVjSZFMq6zQhVXaG/White-Wood-Texture-Photography-Backdrops-Wooden-floor-photo-background-newborn-Props-photo-booth-Studio-picture.jpg_Q90.jpg_.webp")
+ }
+    </style>
 </head>
 <body>
-    <h1>Create a New product</h1>
-    <form action="/products/<%= data.id %>?_method=PUT" method="POST">
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="description" placeholder="type"> 
-        <input type="text" name="img" placeholder="image URL">
-        <input type="text" name="qty" placeholder="type"> 
+    <h1>Edit Products</h1>
+
+    <form action="/products/<%= foundProduct.id %>?_method=PUT" method="POST">
+       Name:<br><input type="text" name="name" placeholder="<%=foundProduct.name%>" required><br>
+       Description:<br><input type="text" name="description" placeholder="<%=foundProduct.description%>" required> <br>
+       URL links:<br><input type="url" name="img" placeholder="<%=foundProduct.img%>" required><br>
+        Price:<br><input type="number" name="price" placeholder="<%=foundProduct.price%>" required><br>
+        Quantity:<br><input type="number" name="qty" placeholder="<%=foundProduct.qty%>" required> <br>
     
         <input type="submit" value="Edit Products">
     </form>
+
+    <%- include("./partials/footer.ejs")%>
 </body>
 </html>
