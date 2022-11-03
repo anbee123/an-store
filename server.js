@@ -57,6 +57,20 @@ app.put("/products/:id", (req, res) => {
    Product[req.params.id] = req.params.id
     res.redirect(`/products/${req.params.id}`)
 })
+
+//order route //
+app.put("/products/order/:id", (req,res) =>{
+  
+  Product.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    (err,purchasedProducts)=>{
+      purchasedProducts.qty -=1
+      purchasedProducts.save()
+      res.redirect(`/products/${req.params.id}`)
+    } )
+} )
+
 //CREATE//
 app.post("/products", (req, res) => {
 

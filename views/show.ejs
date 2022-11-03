@@ -5,7 +5,7 @@
     <style>
     
         body {
-            background-image: url("https://st3.depositphotos.com/1021722/13762/i/450/depositphotos_137623752-stock-photo-art-spring-background-fresh-flower.jpg");
+            background-image: url("https://ae01.alicdn.com/kf/HTB1w3cCdliE3KVjSZFMq6zQhVXaG/White-Wood-Texture-Photography-Backdrops-Wooden-floor-photo-background-newborn-Props-photo-booth-Studio-picture.jpg_Q90.jpg_.webp");
             font-family: inherit;
             background-size: cover;
             background-attachment: fixed;
@@ -14,8 +14,9 @@
             justify-content: center;
  }
         img {
-           size: 10%;
-           padding: 5%;
+         height: 500px;
+         width: 500px;
+           padding: 5px;
         }
         a {
             color: rgb(214, 100, 209);
@@ -23,27 +24,28 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1><%= products.name%></h1>
-        <img src="<%= products.img%>" alt="<%= products.name%>"><br>
-    
-        <ul>
-            <% for(let i=0; i < products.length; i++) { %>
-                <li>
-                    <%= products[i].name%>
-                </li>
-            <% } %>
-        </ul>
-
-        <ul>
-            <li>Name: <%= products.name%> </li>
-            <li>Description: <%= products.description%> </li>
-             <li>Quantity: <%= products.qty%></li>
-        </ul>
-        <form action="/products/<%= products._id %>?_method=PUT" method="post">
-            <input type="submit" value="BUY"  />
-          <a href="/products/<%= products._id %>/edit">Update</a>
-
+    <div class="flex-container">
+        <img src="<%=products.img%>"> 
+      <h2>Name: <%=products.name%></h2>
+      <h2>Description: <%= products.description%></h2>
+      <h2>Price: <%= products.price%></h2>
+      <h2>Quantity: <%= products.qty%></h2>
+   <% if(products.qty > 2) { %>
+<h3> In Stock    <form action="/products/order/<%= products._id%>?_method=PUT" method="POST">
+    <input type="submit" value="OREDER"/>
+</form></h2>
+<%} else if(products.qty > 0) {%>
+<h3> Low In Stock    <form action="/products/order/<%= products._id%>?_method=PUT" method="POST">
+    <input type="submit" value="OREDER"/>
+</h3>
+<%} else {%> 
+<h3> Out Of Stock</h3>
+<% } %>
+<form action="/products/<%= products._id%>?_method=DELETE" method="post">
+    <input type="submit" value="DELETE">
+</form>
+<button><a href= "/products/<%=products._id%>/edit">EDIT</a></button> <br>
+<button><a href="/products"> Home Page</a></button>
     </div> 
 </body>
 </html>
